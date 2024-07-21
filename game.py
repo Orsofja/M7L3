@@ -20,13 +20,13 @@ level_choose = input('Выберите уровень сложности(лег�
 
 
 if level_choose == 'легкий':
-    chosen_word = random.choose(levels['easy'])
+    chosen_word = random.choise(levels['easy'])
     print(chosen_word)
 elif level_choose == 'средний':
-    chosen_word = random.choose(levels['medium'])
+    chosen_word = random.choise(levels['medium'])
     print(chosen_word)
 elif level_choose == 'сложный':
-    chosen_word = random.choose(levels['hard'])
+    chosen_word = random.choise(levels['hard'])
     print(chosen_word)
 else:
     print('Неверный ввод! Попробуйте еще раз')

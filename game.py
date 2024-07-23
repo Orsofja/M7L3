@@ -5,6 +5,13 @@ import time
 mic = speech_recog.Microphone()
 recog = speech_recog.Recognizer()
 
+def gameplay():
+    with mic as audio_file:
+        print('Говорите')
+        recog.adjust_for_ambient_noise(audio_file)
+        audio = recog.listen(audio_file)
+        print("You said: " + recog.recognize_google(audio, language="en-EN"))
+
 levels = {
 
     "easy": ["dairy", "mouse", "computer"],
@@ -18,27 +25,19 @@ levels = {
 level_choose = input('Выберите уровень сложности(легкий, средний, сложный):')
 
 
-
 if level_choose == 'легкий':
-    chosen_word = random.choise(levels['easy'])
-    print(chosen_word)
+    print(random.choice(levels["easy"]))
+    gameplay()
+
 elif level_choose == 'средний':
-    chosen_word = random.choise(levels['medium'])
-    print(chosen_word)
+    print(random.choice(levels["medium"]))
+    gameplay()
+
 elif level_choose == 'сложный':
-    chosen_word = random.choise(levels['hard'])
-    print(chosen_word)
+    print(random.choice(levels["hard"]))
+    gameplay()
+
 else:
     print('Неверный ввод! Попробуйте еще раз')
 
-with mic as audio_file:
-    print('Говорите')
-    recog.adjust_for_ambient_noise(audio_file)
-    audio = recog.listen(audio_file)
-    recognised_word = recog.recognize_google(audio, language="en-EN")
-    print('Вы сказали', recognised_word)
 
-if recognised_word == chosen_word:
-    print ('Слово произнесено правильно!')
-else:
-    print('Увы, слово произнесено неправильно!')
